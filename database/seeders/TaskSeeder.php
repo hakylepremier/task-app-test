@@ -12,6 +12,17 @@ class TaskSeeder extends Seeder
      */
     public function run(): void
     {
-        Task::factory(5)->create();
+        $dummyUser = null;
+        if (\App\Models\User::where('email', 'dummy@example.com')->count() == 0) {
+            $dummyUser = \App\Models\User::factory()->create([
+                'name' => 'Dummy User',
+                'email' => 'dummy@example.com',
+            ]);
+        }
+        $dummyUser = \App\Models\User::where('email', 'dummy@example.com')->first();
+
+        Task::factory(5)->create([
+            'user_id' => $dummyUser->id,
+        ]);
     }
 }
