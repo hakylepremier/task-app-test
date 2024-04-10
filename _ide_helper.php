@@ -18310,6 +18310,22 @@ namespace Livewire {
             }
     }
 
+namespace Mary\Facades {
+            /**
+     * 
+     *
+     */        class Mary {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function hello()
+        {
+                        return \Mary\Mary::hello();
+        }
+            }
+    }
+
 namespace Spatie\LaravelIgnition\Facades {
             /**
      * 
@@ -22405,6 +22421,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class Livewire extends \Livewire\Livewire {}
+            class Mary extends \Mary\Facades\Mary {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
     }
 
