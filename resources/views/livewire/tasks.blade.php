@@ -2,18 +2,19 @@
 
 use App\Models\Task;
 
-use function Livewire\Volt\{state, mount, rules};
+use function Livewire\Volt\{state, mount, rules, on};
 
 state([
     'tasks' => [],
     'name' => '',
     'deleteModal' => false,
+    'editing' => null,
 ]);
 
-$getTasks = fn() => ($this->tasks = Task::orderBy('priority')->get());
+$getTasks = fn() => ($this->tasks = Task::orderBy('priority')->latest()->get());
 
 mount(function () {
-    $this->task = $this->getTasks();
+    $this->tasks = $this->getTasks();
 });
 
 rules([
@@ -23,13 +24,13 @@ rules([
 $store = function () {
     $validated = $this->validate();
 
-    $task = Task::create($validated);
+    $tasks = Task::create($validated);
 
     $this->name = '';
 
     $this->dispatch('task-created');
 
-    $this->task = $this->getTasks();
+    $this->tasks = $this->getTasks();
 };
 
 $delete = function (Task $task) {
@@ -40,14 +41,43 @@ $delete = function (Task $task) {
     $this->task = $this->getTasks();
 };
 
+$disableEditing = function () {
+    $this->editing = null;
+
+    return $this->getTasks();
+};
+
+$updateTaskPriority = function ($tasks) {
+    // dd($tasks);
+    foreach ($tasks as $task) {
+        Task::find($task['value'])->update(['priority' => $task['order']]);
+    }
+    $this->tasks = $this->getTasks();
+};
+
+$edit = function (Task $task) {
+    $this->editing = $task;
+
+    $this->tasks = $this->getTasks();
+};
+
+on([
+    'task-updated' => function () {
+        // $this->goal = $this->goal->refresh();
+        $this->editing = null;
+        $this->tasks = $this->getTasks();
+    },
+    'task-edit-canceled' => $disableEditing,
+]);
 ?>
 
-<div>
+<div data-theme="light" class="bg-transparent">
     <form wire:submit="store">
-        <x-mary-input label="Create a task" wire:model="name">
+        <x-mary-input placeholder="Create a task" wire:model="name">
             <x-slot:append>
                 {{-- Add `rounded-l-none` class --}}
-                <x-mary-button label="Create Task" class="rounded-l-none btn-primary" type="submit" spinner="save" />
+                <x-mary-button label="Create Task" class="border-2 rounded-l-none btn-primary " type="submit"
+                    spinner="save" />
             </x-slot:append>
         </x-mary-input>
 
@@ -55,15 +85,30 @@ $delete = function (Task $task) {
             <x-mary-button label="Cancel" />
         </x-slot:actions>
     </form>
-    @foreach ($tasks as $task)
-        <div class="flex justify-between">
-            <p>{{ $task->name }}</p>
-            <div>
-                <x-mary-button label="Edit" />
-                <x-mary-button wire:click="delete({{ $task->id }})"
-                    wire:confirm="Are you sure to delete this chirp?" label="Delete"
-                    spinner="delete({{ $task->id }})" />
-            </div>
-        </div>
-    @endforeach
+    <ul wire:sortable="updateTaskPriority" class="py-4 space-y-2 text-gray-800">
+        @foreach ($tasks as $task)
+            <li wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
+                @if ($task->is($editing))
+                    <livewire:tasks.edit :task="$task" :key="$task->id" />
+                @else
+                    <div class="flex items-center justify-between">
+                        <p wire:sortable.handle>{{ $task->name }}</p>
+                        <div class="flex items-center justify-center gap-2">
+                            <x-mary-button label="Edit" wire:click="edit({{ $task->id }})"
+                                spinner="edit({{ $task->id }})" class="btn-outline border-primary" />
+                            <x-mary-button wire:click="delete({{ $task->id }})"
+                                wire:confirm="Are you sure to delete this Task?" label="Delete"
+                                spinner="delete({{ $task->id }})" class="btn-error" />
+                        </div>
+                        {{-- <x-mary-dropdown>
+                            <x-mary-menu-item title="Archive" icon="o-archive-box" />
+                            <x-mary-menu-item title="Remove" icon="o-trash" />
+                            <x-mary-menu-item title="Restore" icon="o-arrow-path" />
+                        </x-mary-dropdown> --}}
+                    </div>
+                @endif
+            </li>
+        @endforeach
+    </ul>
+    </ul>
 </div>

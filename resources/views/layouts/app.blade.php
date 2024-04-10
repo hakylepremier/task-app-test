@@ -34,7 +34,9 @@
             {{ $slot }}
         </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v1.x.x/dist/livewire-sortable.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/livewire-sortable@1.0.0/dist/livewire-sortable.min.js
+"></script>
 </body>
 
 </html>
