@@ -17,6 +17,7 @@ state([
     'message' => 'All tasks',
 ]);
 
+// gets all task for authorised user
 $getTasks = fn() => ($this->tasks = auth()->user()->tasks()->with('project')->orderBy('priority')->latest()->get());
 
 mount(function () {
@@ -31,6 +32,7 @@ rules([
 
 $store = function () {
     $validated = $this->validate();
+    // checks if project id is '', which is default and makes it null before storing
     if ($this->project_id == '') {
         $project = ['project_id' => null];
         // $task = array_diff($first, $second);
@@ -67,6 +69,8 @@ $disableEditing = function () {
     return $this->getTasks();
 };
 
+// this changes the priority of the task when a drag and drop occurs.
+// livewire-sortable package uses
 $updateTaskPriority = function ($tasks) {
     // dd($tasks);
     foreach ($tasks as $task) {
@@ -130,9 +134,11 @@ on([
 ?>
 
 <div data-theme="light" class="bg-transparent">
-  <p>{{ $message }}</p>
-  <form wire:submit="store" class="flex flex-col gap-2">
-    <x-mary-input placeholder="Create a task" wire:model="name" />
+  <h3 class="text-center">{{ $message }}</h3>
+
+  <form wire:submit="store" class="flex flex-col gap-2 border-gray-300 border-y-2 py-2">
+    <h2 class="font-bold text-lg">Create Task</h2>
+    <x-mary-input placeholder="Add a name" wire:model="name" />
 
     <select class="w-full select select-bordered" wire:model="project_id">
       <option value="" selected>No project selected</option>

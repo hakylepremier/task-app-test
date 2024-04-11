@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="pb-12 pt-4">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <livewire:tasks.project />
             <livewire:tasks.index />
