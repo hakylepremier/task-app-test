@@ -1,11 +1,19 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-CDLiBqT_.css",
+    "file": "assets/app-DcXDBabS.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/images/bg-image.webp": {
+    "file": "assets/bg-image-BkJXbycS.webp",
+    "src": "resources/images/bg-image.webp"
+  },
+  "resources/images/screenshot.png": {
+    "file": "assets/screenshot-XTW8lkzX.png",
+    "src": "resources/images/screenshot.png"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-D2jpX1vH.js",
+    "file": "assets/app-VbgmC3vy.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
