@@ -32,8 +32,8 @@ $cancel = fn() => $this->dispatch('task-edit-canceled');
         <form wire:submit="update" class="flex justify-between">
             <x-mary-input placeholder="Edit your task" wire:model="name" />
             <div class="flex items-center justify-center gap-2">
-                <x-mary-button label="Save" type="submit" spinner="update" />
-                <x-mary-button wire:click.prevent="cancel" label="Cancel" spinner="cancel" />
+                <x-mary-button label="Save" type="submit" spinner="update" class="btn-sm" />
+                <x-mary-button wire:click.prevent="cancel" label="Cancel" spinner="cancel" class="btn-sm" />
             </div>
         </form>
         {{-- <x-mary-dropdown>
