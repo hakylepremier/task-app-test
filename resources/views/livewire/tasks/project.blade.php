@@ -42,10 +42,10 @@ on([
 ?>
 
 <div data-theme="light" class="pb-4 bg-transparent">
-    {{-- <x-select label="Alternative" :options="$projects" option-value="id" option-label="title" placeholder="Select an user"
+  {{-- <x-select label="Alternative" :options="$projects" option-value="id" option-label="title" placeholder="Select an user"
         placeholder-value="0" hint="Select one, please." wire:model="selectedProject"
         @change="$emit('project-selected', $selectedProject)" /> --}}
-    {{-- <select id="category" wire:model="category_id"
+  {{-- <select id="category" wire:model="category_id"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option selected>No category</option>
                 @forelse ($categories as $category)
@@ -54,21 +54,21 @@ on([
                     <div></div>
                 @endforelse
             </select> --}}
-    <form wire:submit='filter' class="flex">
+  <form wire:submit='filter' class="flex">
 
-        <select class="w-full select select-bordered" wire:model="project_id">
-            <option value="all" selected>All tasks</option>
-            <option value="none" selected>Tasks with No Project</option>
-            @forelse ($projects as $project)
-                <option value="{{ $project->id }}">{{ $project->title }}</option>
-            @empty
-                <div></div>
-            @endforelse
-        </select>
-        <x-mary-button label="Filter" spinner="filter" class="btn-accent" type="submit" />
+    <select class="w-full select select-bordered" wire:model="project_id">
+      <option value="all" selected>All tasks</option>
+      <option value="none" selected>Tasks with No Project</option>
+      @forelse ($projects as $project)
+        <option value="{{ $project->id }}">{{ $project->title }}</option>
+      @empty
+        <div></div>
+      @endforelse
+    </select>
+    <x-mary-button label="Filter" spinner="filter" class="btn-accent" type="submit" />
 
-    </form>
-    {{-- @if ($selectedProject || $selectedProject == 0)
+  </form>
+  {{-- @if ($selectedProject || $selectedProject == 0)
         <p>All task</p>
     @else
     @endif --}}
