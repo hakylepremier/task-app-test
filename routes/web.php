@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+Route::view('/', 'home');
 
 Route::view('tasks', 'tasks')
     ->middleware(['auth'])

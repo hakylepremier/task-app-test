@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $user = User::factory()->create([
-            'name' => 'Humphrey Yeboah',
-            'email' => 'haky@haky.com',
-        ]);
+        $user = \App\Models\User::factory()->create([
+                'name' => 'Dummy User',
+                'email' => 'dummy@example.com',
+            ]);
 
         Task::factory(5)->create([
             'user_id' => $user->id
