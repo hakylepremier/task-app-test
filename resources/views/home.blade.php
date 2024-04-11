@@ -32,7 +32,7 @@
           <ul class="flex flex-col gap-4 rounded-lg font-inter">
             <li
               class="p-4 bg-white rounded-xl shadow-[10px_10px_1px_rgba(15,_118,_110,_1),_0_10px_20px_rgba(204,_204,_204,_1)]">
-              <img src="{{ Vite::asset('resources/images/screenshot.png') }}"
+              <img src="{{ Vite::asset('resources/images/screenshot.jpg') }}"
                 class="rounded-xl border-gray-300 border-2" alt="A screenshot">
             </li>
           </ul>

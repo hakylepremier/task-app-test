@@ -4,7 +4,7 @@ A task management web app with drag and drop sorting of tasks.
 
 ## Screenshot
 
-![A screenshot of the final page](./resources/images/screenshot.png)
+![A screenshot of the final page](./resources/images/screenshot.jpg)
 
 ## Features
 
