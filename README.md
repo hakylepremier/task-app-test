@@ -1,66 +1,68 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Task Project Test
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A task management web app with drag and drop sorting of tasks.
 
-## About Laravel
+## Screenshot
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![A screenshot of the final page](./resources/images/screenshot.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   Can add task
+-   Can edit task
+-   Can delete task
+-   Can filter task based on project
+-   Can create project
+-   Can edit project
+-   Can delete project
+-   Can create task for specific project or not
 
-## Learning Laravel
+## Built With
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   [Laravel](https://laravel.com/)
+-   [Livewire (Volt - Functional Components)](https://livewire.laravel.com/docs/volt)
+-   [MaryUI (DaisyUI + Livewire)](https://mary-ui.com/)
+-   [Tailwind CSS](https://tailwindcss.com/)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Prerequisite
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   PHP v8.2^
+-   Composer v2^
+-   MySql
+-   Nodejs v20.10^
 
-## Laravel Sponsors
+## Instructions for developers:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   Clone repo
+-   Install composer packages `composer install`
+-   Install npm packages `npm install`
+-   Rename `.env.example` to `.env`
+-   In the `.env` file put the appropriate data for your sql server in the `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`
+-   Generate the app key `php artisan key:generate --ansi`
+-   Run migrations with seeder `php artisan migrate --seed`
+-   Run laravel server `php artisan serve`
+-   Run vite `npm run dev`
+-   Visit the localhost instance and login with the credentials: `Email: dummy@example.com` `Password: password`
+-   Explore the application
 
-### Premium Partners
+## Instructions for deployment:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   Setup your server using this [deploment guide](https://laravel.com/docs/11.x/deployment)
+-   Setup [nodejs](https://nodejs.org/en) and npm on your server
+-   Clone repo into your server
+-   Install composer packages `composer install` or `php composer.phar install`
+-   Install npm packages `npm install`
+-   Rename `.env.example` to `.env`
+-   In the `.env` file put the appropriate data for your sql server in the `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`
+-   In the `.env` file make `APP_ENV=prod`, `APP_DEBUG=false` and `APP_URL` to your domain name, e.g `APP_URL=https://taskexample.com`.
+-   Generate the app key `php artisan key:generate --ansi`
+-   Run migrations with seeder `php artisan migrate --seed`
+-   Build javascript bundle `npm run build`
+-   Visit your domain and login with the credentials: `Email: dummy@example.com` `Password: password`
+-   Explore the application
 
-## Contributing
+## Links
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   Project Github: https://github.com/hakylepremier/task-app-test
+-   My website: https://humphreyyeboah.com
+-   My Github: https://github.com/hakylepremier/
