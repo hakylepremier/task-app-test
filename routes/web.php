@@ -8,6 +8,10 @@ Route::view('tasks', 'tasks')
     ->middleware(['auth'])
     ->name('tasks');
 
+Route::view('projects', 'projects')
+    ->middleware(['auth'])
+    ->name('projects');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
